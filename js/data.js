@@ -65,7 +65,7 @@ async function loadContent(){
  if(!/^https?:$/.test(location.protocol))return false;
  const pub=c=>{const o={...c};['mashups','events','packs','gallery'].forEach(k=>{o[k]=(c[k]||[]).filter(x=>x.published!==false)});return o};
  try{
-  let draft=null;try{if(localStorage.getItem('jv_unlock')==='1')draft=JSON.parse(localStorage.getItem('jv_draft'))}catch(e){}
+  let draft=null;try{if(localStorage.getItem('jv_unlock')==='1'&&localStorage.getItem('jv_dirty')==='1')draft=JSON.parse(localStorage.getItem('jv_draft'))}catch(e){}
   if(draft&&draft.artist){window.__jvLive=draft;applyContent(pub(draft));return true}
   const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),3500);
   const r=await fetch('content.json?v='+Date.now(),{signal:ctl.signal,cache:'no-cache'});clearTimeout(t);
