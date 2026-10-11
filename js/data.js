@@ -53,6 +53,7 @@ function applyContent(raw){
  const c=clean(raw),pad=n=>String(n).padStart(2,'0'),now=new Date(),today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
  const a=c.artist||{},ab=c.about||{};
  DATA.live=true;
+ DATA.legal=c.legal||{};
  if(c.session)DATA.session={title:c.session.title||'',url:c.session.url||'',cover:c.session.cover||''};
  DATA.artist={...DATA.artist,tagline:a.tagline||'',email:a.email||'',social:a.social||[]};
  DATA.about={intro:ab.intro||'',estilo:ab.estilo||'',trayectoria:ab.trayectoria||'',residencia:ab.residencia||'',verbenas:ab.verbenas||[],salas:ab.salas||[]};

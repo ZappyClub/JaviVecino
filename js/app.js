@@ -50,6 +50,50 @@ const Gal=g=>{const cap=g.label||g.title||'';
  if(g.type==='video'&&g.url)return `<figure data-t="${g.type||''}" class="gi ${g.cls||''} vid" data-cur="Ver"><a href="${g.url}" target="_blank" rel="noopener" aria-label="Ver vídeo ${cap}">${body}<span class="pl2" aria-hidden="true"></span></a></figure>`;
  return `<figure data-t="${g.type||''}" class="gi ${g.cls||''}" data-cur="Ver">${body}</figure>`};
 const Social=()=>`<div class="soc">${DATA.artist.social.map(s=>`<a href="${s[1]}" rel="noopener" target="_blank">${s[0]}</a>`).join('')}</div>`;
+
+/* ============ TEXTOS LEGALES ============ */
+const LGD=()=>DATA.legal||{};
+const LGW=()=>location.protocol.startsWith('http')?location.origin:'la web';
+const LGT=()=>LGD().titular||DATA.artist.name;
+const LGI=()=>`<ul><li><b>Titular:</b> ${LGT()}</li>${LGD().nif?`<li><b>NIF/CIF:</b> ${LGD().nif}</li>`:''}${LGD().domicilio?`<li><b>Domicilio:</b> ${LGD().domicilio}</li>`:''}${LGD().email?`<li><b>Correo electrónico:</b> ${LGD().email}</li>`:''}<li><b>Sitio web:</b> ${LGW()}</li><li><b>Redes de contacto:</b> ${DATA.artist.social.map(s=>s[0]).join(', ')}</li></ul>`;
+const LGC=()=>LGD().email?`escribiendo a ${LGD().email} o a través de nuestras redes sociales`:'a través de nuestras redes sociales';
+const LEG={
+'aviso-legal':['Aviso legal',()=>`
+<h2>1. Datos identificativos</h2><p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:</p>${LGI()}
+<h2>2. Objeto</h2><p>Esta web es el espacio oficial de ${DATA.artist.name}, DJ y productor de A Coruña. Su finalidad es dar a conocer su música, mashups, agenda de actuaciones, packs y contenido gráfico.</p>
+<h2>3. Condiciones de acceso y uso</h2><p>El acceso a la web es libre y gratuito. La persona usuaria se compromete a hacer un uso adecuado de los contenidos, conforme a la ley, a la buena fe y al orden público, y a no emplearlos para fines ilícitos o que perjudiquen a terceros o al titular.</p>
+<h2>4. Propiedad intelectual e industrial</h2><p>Los textos, el diseño, el logotipo, las fotografías, los carteles, los mashups y demás contenidos de esta web pertenecen a su titular o a terceros que han autorizado su uso, y están protegidos por la legislación de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución, comunicación pública o transformación sin autorización expresa, salvo los usos permitidos por la ley o los que se indiquen expresamente (por ejemplo, descargas habilitadas para uso personal).</p><p>Algunos mashups y remezclas pueden incluir fragmentos de obras de terceros. Si eres titular de derechos y consideras que algún contenido vulnera tus derechos, escríbenos ${LGC()} indicando la obra y el contenido afectado, y lo revisaremos y retiraremos si procede.</p>
+<h2>5. Enlaces a otras webs</h2><p>Esta web enlaza con plataformas de terceros (Instagram, TikTok, YouTube, SoundCloud, Spotify y otras). No controlamos sus contenidos ni sus políticas, y no nos hacemos responsables de ellos. Su uso se rige por sus propias condiciones.</p>
+<h2>6. Responsabilidad</h2><p>El titular procura que la información sea correcta y esté actualizada, pero no garantiza la ausencia de errores ni la disponibilidad continua del sitio. Las fechas, horarios y condiciones de los eventos son orientativos y pueden cambiar; la información definitiva la ofrecen la sala u organizador correspondiente.</p>
+<h2>7. Legislación aplicable y jurisdicción</h2><p>Este aviso se rige por la legislación española. Para cualquier controversia, y salvo que la normativa de consumidores establezca otro fuero, las partes se someten a los juzgados y tribunales del domicilio de la persona consumidora o, en su defecto, a los de A Coruña.</p>`],
+'privacidad':['Política de privacidad',()=>`
+<h2>1. Responsable del tratamiento</h2>${LGI()}<p>Puedes contactar con el responsable ${LGC()}.</p>
+<h2>2. Qué datos tratamos</h2><p>Esta web <b>no tiene formularios, registro de usuarios ni comentarios</b>, y no recoge datos personales de forma directa. Los únicos datos que pueden tratarse son:</p><ul><li><b>Datos técnicos de la visita</b> (dirección IP, tipo de navegador, fecha y hora, página solicitada), que registra el servidor donde está alojada la web por motivos de seguridad y funcionamiento.</li><li><b>Datos de contacto y mensajes</b>, si decides escribirnos por correo o por redes sociales, que usaremos solo para responderte.</li></ul>
+<h2>3. Finalidad y base jurídica</h2><ul><li>Garantizar el funcionamiento y la seguridad de la web: interés legítimo (art. 6.1.f RGPD).</li><li>Atender tus consultas y solicitudes de contratación: consentimiento y/o aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b RGPD).</li></ul>
+<h2>4. Destinatarios y transferencias internacionales</h2><p>Para prestar el servicio utilizamos proveedores que actúan como encargados del tratamiento: <b>Vercel Inc.</b> (alojamiento web), <b>GitHub, Inc.</b> (almacenamiento del código y los archivos del sitio) y <b>Google LLC</b> (tipografías web). Estos proveedores pueden estar en Estados Unidos; las transferencias se amparan en las garantías previstas en el RGPD (como el Marco de Privacidad de Datos UE-EE. UU. o las cláusulas contractuales tipo). No vendemos ni cedemos tus datos a terceros con fines comerciales.</p>
+<h2>5. Plazo de conservación</h2><p>Los datos técnicos se conservan el tiempo que establezca el proveedor de alojamiento. Los mensajes que nos envíes se conservarán mientras sea necesario para atenderlos y, después, durante los plazos legales aplicables.</p>
+<h2>6. Tus derechos</h2><p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, así como retirar tu consentimiento en cualquier momento, ${LGC()}. Si consideras que no hemos tratado tus datos correctamente, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+<h2>7. Menores</h2><p>Esta web no está dirigida a menores de 14 años. Si eres menor de esa edad, no nos envíes datos personales sin el consentimiento de tu madre, padre o tutor.</p>
+<h2>8. Cambios</h2><p>Podemos actualizar esta política para adaptarla a cambios legales o del sitio. La versión vigente es siempre la publicada aquí.</p>`],
+'cookies':['Política de cookies',()=>`
+<h2>1. Qué son las cookies</h2><p>Las cookies y tecnologías similares (como el almacenamiento local del navegador) son pequeños archivos que una web guarda en tu dispositivo para recordar información. Se rigen por el artículo 22.2 de la LSSI-CE y el RGPD.</p>
+<h2>2. Qué usamos en esta web</h2><p>Esta web <b>no utiliza cookies de análisis, publicidad ni seguimiento</b>. Solo guarda en tu dispositivo lo imprescindible para funcionar y recordar tu elección:</p>
+<div class="tw"><table><thead><tr><th>Nombre</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr></thead><tbody>
+<tr><td>jv_cookies</td><td>Técnica (almacenamiento local)</td><td>Recordar tu elección sobre este aviso de cookies.</td><td>Hasta que la borres</td></tr>
+<tr><td>jv_unlock, jv_draft, jv_dirty, jv_gh</td><td>Técnica (almacenamiento local)</td><td>Solo se crean en el dispositivo de la persona que administra la web, para el panel de edición. No se crean si solo visitas la web.</td><td>Hasta que se borren</td></tr>
+</tbody></table></div>
+<h2>3. Servicios de terceros</h2><ul><li><b>Google Fonts:</b> las tipografías se cargan desde servidores de Google, que pueden recibir tu dirección IP y datos del navegador al servirlas. No instala cookies de seguimiento por sí mismo.</li><li><b>Enlaces a redes y plataformas</b> (Instagram, TikTok, YouTube, SoundCloud, Spotify): al abrirlos sales de esta web y se aplican las cookies y políticas de cada plataforma.</li></ul>
+<h2>4. Cómo gestionar o eliminar las cookies</h2><p>Puedes cambiar tu elección en cualquier momento con el botón <b>Configurar cookies</b> del pie de página. También puedes bloquear o borrar cookies y datos del sitio desde los ajustes de tu navegador (Chrome, Firefox, Safari, Edge). Si en el futuro añadimos cookies de análisis u otras no necesarias, te lo pediremos antes de activarlas y actualizaremos esta política.</p>`],
+'terminos':['Términos de uso',()=>`
+<h2>1. Aceptación</h2><p>Al navegar por esta web aceptas estos términos de uso. Si no estás de acuerdo, te pedimos que no la utilices.</p>
+<h2>2. Uso permitido</h2><p>Puedes consultar, escuchar y compartir los enlaces de esta web con fines personales y no comerciales. No está permitido copiar el diseño o los contenidos, intentar acceder a zonas restringidas, alterar el funcionamiento del sitio ni usarlo para actividades ilícitas.</p>
+<h2>3. Música, mashups y descargas</h2><p>Los mashups, packs y demás contenidos descargables se ofrecen para <b>uso personal y no comercial</b>. No se permite su reventa, su subida a otras plataformas como contenido propio ni su uso en eventos o contenidos de pago sin autorización previa. Estos contenidos pueden incluir fragmentos de obras de terceros: la descarga no te otorga ningún derecho sobre ellas y los derechos de sus titulares quedan a salvo.</p>
+<h2>4. Eventos y entradas</h2><p>La agenda es informativa. Las entradas, precios, aforos, edades mínimas y condiciones de acceso los gestionan las salas, organizadores o plataformas de venta, y se rigen por sus propias condiciones. Los eventos pueden modificarse o cancelarse.</p>
+<h2>5. Contenido enviado por la persona usuaria</h2><p>Si nos envías mensajes, fotos u otros materiales por correo o redes, nos garantizas que tienes derecho a hacerlo. No los publicaremos en esta web sin tu permiso.</p>
+<h2>6. Limitación de responsabilidad</h2><p>La web se ofrece «tal cual». No garantizamos que esté libre de errores o interrupciones ni nos hacemos responsables de daños derivados de su uso o del acceso a webs de terceros enlazadas, salvo que la ley disponga lo contrario.</p>
+<h2>7. Modificaciones</h2><p>Podemos modificar estos términos en cualquier momento. La versión publicada es la vigente.</p>
+<h2>8. Ley aplicable</h2><p>Estos términos se rigen por la legislación española. Consulta también nuestro <a href="#/aviso-legal">Aviso legal</a>, la <a href="#/privacidad">Política de privacidad</a> y la <a href="#/cookies">Política de cookies</a>.</p>`]
+};
 /* ============ PÁGINAS ============ */
 let up=[],past=[];
 function derive(){up=DATA.events.filter(e=>!e.past).sort((x,y)=>(x.date||'').localeCompare(y.date||''));past=DATA.events.filter(e=>e.past).sort((x,y)=>(y.date||'').localeCompare(x.date||''))}
@@ -76,15 +120,16 @@ contenido:()=>`<div class="pg"><div class="wrap"><p class="lbl">Imagen</p><h1>Co
 sobre:()=>{const A=DATA.about;return `<div class="pg"><div class="wrap"><p class="lbl">Sobre mí</p><h1>Sobre mí</h1><div class="dt2"><div class="fr po">${Photo('bn','Retrato en blanco y negro de DJ Javi Vecino','(max-width:820px) 100vw,45vw','50% 62%')}</div><div>${A.intro?`<p class="lead pre">${A.intro}</p>`:''}${A.estilo?`<h3 class="sm">Estilo</h3><p class="sp2 pre">${A.estilo}</p>`:''}${A.trayectoria?`<h3 class="sm">Trayectoria</h3><p class="sp2 pre">${A.trayectoria}</p>`:''}${A.residencia?`<p class="sp2 pre"><strong>${A.residencia}</strong></p>`:''}</div></div>
 ${A.verbenas.length||A.salas.length?`<div class="tray">${A.verbenas.length?`<div><p class="lbl">Verbenas destacadas</p><ul class="tl2">${A.verbenas.map((v,i)=>`<li><span>${String(i+1).padStart(2,'0')}</span>Verbena ${v}</li>`).join('')}</ul></div>`:''}${A.salas.length?`<div><p class="lbl">Salas y discotecas</p><ul class="tl2">${A.salas.map((s,i)=>`<li><span>${String(i+1).padStart(2,'0')}</span>${s[0]}<em>${s[1]||''}</em></li>`).join('')}</ul></div>`:''}</div>`:''}
 <p class="lbl" style="margin:56px 0 14px">Redes</p>${Social()}</div></div>`},
+legal:k=>`<div class="pg"><div class="wrap"><p class="lbl">Información legal</p><h1>${LEG[k][0]}</h1><div class="lg">${LEG[k][1]()}<p class="lgd">Última actualización: 11 de octubre de 2026.</p><div class="lgn"><a href="#/aviso-legal">Aviso legal</a><a href="#/privacidad">Privacidad</a><a href="#/cookies">Cookies</a><a href="#/terminos">Términos de uso</a></div></div></div></div>`,
 contacto:()=>`<div class="pg"><div class="wrap"><p class="lbl">Redes</p><h1>Contacto</h1><p style="color:var(--mute);margin:0 0 28px;max-width:46ch">Escríbeme por mis redes.</p>${Social()}</div></div>`,
 nf:()=>`<div class="pg"><div class="wrap"><h1>404</h1>${Btn('Volver al inicio','#/')}</div></div>`};
 /* ============ ROUTER ============ */
 const NAV=[['Mashups','mashups'],['Agenda','agenda'],['Packs','packs'],['Contenido','contenido'],['Sobre mí','sobre-mi'],['Contacto','contacto']];
 $('#mn').innerHTML=NAV.map(n=>`<li><a href="#/${n[1]}">${n[0]}</a></li>`).join('');
-function buildFooter(){$('#ft').innerHTML=`<div><a class="logo" href="#/" aria-label="DJ Javi Vecino — inicio"><img src="assets/logo-javivecino.png" alt="DJ Javi Vecino" width="573" height="270"></a></div><ul>${NAV.map(n=>`<li><a href="#/${n[1]}">${n[0]}</a></li>`).join('')}</ul><ul>${DATA.artist.social.map(s=>`<li><a href="${s[1]}">${s[0]}</a></li>`).join('')}</ul><div class="cp"><span id="cpy">© ${new Date().getFullYear()} ${DATA.artist.name}</span><a href="#/contacto">Aviso legal</a><a href="#/contacto">Política de privacidad</a><button type="button" class="mnt" id="mnt">Mantenimiento (Código Privado)</button></div>`;}
+function buildFooter(){$('#ft').innerHTML=`<div><a class="logo" href="#/" aria-label="DJ Javi Vecino — inicio"><img src="assets/logo-javivecino.png" alt="DJ Javi Vecino" width="573" height="270"></a></div><ul>${NAV.map(n=>`<li><a href="#/${n[1]}">${n[0]}</a></li>`).join('')}</ul><ul>${DATA.artist.social.map(s=>`<li><a href="${s[1]}">${s[0]}</a></li>`).join('')}</ul><div class="cp"><span id="cpy">© ${new Date().getFullYear()} ${DATA.artist.name}</span><a href="#/aviso-legal">Aviso legal</a><a href="#/privacidad">Privacidad</a><a href="#/cookies">Cookies</a><a href="#/terminos">Términos de uso</a><button type="button" class="mnt" id="ckc">Configurar cookies</button><button type="button" class="mnt" id="mnt">Mantenimiento (Código Privado)</button></div>`;}
 let RT=(()=>{try{return location.hash.replace('#/','')}catch(e){return ''}})();
 function route(){const [a,b]=(RT||'').split('/');cur&&cur();cur=null;
- const h=!a?P.home():a==='mashups'?(b?P.mashup(b):P.mashups()):a==='agenda'?(b?P.evento(b):P.agenda()):a==='packs'?(b?P.pack(b):P.packs()):a==='contenido'?P.contenido():a==='sobre-mi'?P.sobre():a==='contacto'?P.contacto():P.nf();
+ const h=!a?P.home():a==='mashups'?(b?P.mashup(b):P.mashups()):a==='agenda'?(b?P.evento(b):P.agenda()):a==='packs'?(b?P.pack(b):P.packs()):a==='contenido'?P.contenido():a==='sobre-mi'?P.sobre():a==='contacto'?P.contacto():LEG[a]?P.legal(a):P.nf();
  const m=$('#app');m.style.animation='none';m.offsetHeight;m.style.animation='';m.innerHTML=h;scrollTo(0,0);
  document.querySelectorAll('nav a').forEach(x=>x.classList.toggle('on',x.getAttribute('href')==='#/'+a));
  $('#mn').classList.remove('open');$('#bg').setAttribute('aria-expanded','false');
@@ -125,17 +170,19 @@ function reveal(){const els=document.querySelectorAll('main .sh,.sesc,main .next
 /* Pantalla de carga: 3 fases de color (negro azulado → azul profundo → azul eléctrico) */
 (function(){const l=document.getElementById('ld');if(!l)return;
  const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
- l.querySelector('.ld-bg').style.backgroundImage='url("'+PH.hero.src+'")';
- const eq=l.querySelector('.ld-eq'),N=Math.min(90,Math.ceil(innerWidth/16));
+ const low=rm||(navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=4;if(low)l.classList.add('low');
+ for(const c of ['ld-p2','ld-p3']){const d=document.createElement('div');d.className='ld-p '+c;l.insertBefore(d,l.firstChild)}
+ l.querySelector('.ld-bg').style.backgroundImage='url("'+(PH.hero.src.startsWith('data:')?PH.hero.src:'assets/img/directo-800.jpg')+'")';
+ const eq=l.querySelector('.ld-eq'),N=low?20:Math.min(56,Math.ceil(innerWidth/24));
  for(let i=0;i<N;i++){const b=document.createElement('i');const mid=1-Math.abs(i/N-.5)*1.1;b.style.setProperty('--h',(.18+Math.random()*.82*mid).toFixed(2));b.style.setProperty('--d',(.5+Math.random()*.9).toFixed(2)+'s');b.style.setProperty('--l','-'+(Math.random()*1.2).toFixed(2)+'s');eq.appendChild(b)}
  const n=l.querySelector('.ld-n span'),bar=l.querySelector('.ld-line i'),st=l.querySelector('.ld-st');
- const TXT=['Calentando platos','Cargando mashups','Subiendo el volumen'],T=rm?1200:2900,t0=performance.now();let last=0;
+ const TXT=['Calentando platos','Cargando mashups','Subiendo el volumen'],T=rm?700:low?1500:2100,t0=performance.now();let last=0,lv=-1;
  (function f(t){const p=Math.min((t-t0)/T,1),e=1-Math.pow(1-p,2.2),s=p<.34?1:p<.67?2:3;
-  n.textContent=String(Math.round(e*100)).padStart(3,'0');bar.style.width=e*100+'%';
+  const v=Math.round(e*100);if(v!==lv){lv=v;n.textContent=String(v).padStart(3,'0')}bar.style.transform='scaleX('+e+')';
   if(s!==last){last=s;l.dataset.s=s;st.textContent=TXT[s-1]}
   if(p<1)requestAnimationFrame(f);else st.textContent='Listo'})(t0);
- const loaded=new Promise(r=>document.readyState==='complete'?r():addEventListener('load',r));
- Promise.all([new Promise(r=>setTimeout(r,T+250)),loaded,window.__ready||0]).then(()=>{l.classList.add('out');setTimeout(()=>document.body.classList.remove('ld'),450);setTimeout(()=>l.remove(),1100)});
+ const loaded=Promise.race([new Promise(r=>document.readyState==='complete'?r():addEventListener('load',r)),new Promise(r=>setTimeout(r,T+900))]);
+ Promise.all([new Promise(r=>setTimeout(r,T+120)),loaded,Promise.race([window.__ready||0,new Promise(r=>setTimeout(r,T+1500))])]).then(()=>{l.classList.add('out');setTimeout(()=>document.body.classList.remove('ld'),350);setTimeout(()=>l.remove(),950)});
 })();
 /* Lightbox de fotos */
 (function(){const lb=document.createElement('div');lb.id='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-label','Foto ampliada');lb.innerHTML='<img alt=""><button aria-label="Cerrar">×</button>';document.body.appendChild(lb);
@@ -187,4 +234,17 @@ function scrT(el){if(matchMedia('(prefers-reduced-motion:reduce)').matches)retur
   const n=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');if(![CODE,'ADMIN_JAVIVECINO'].map(n).includes(n(inp.value))){err.textContent='Código incorrecto (versión sin servidor)';inp.select();return}
   try{localStorage.setItem('jv_unlock','1')}catch(x){}
   close();if(window.openPanel)window.openPanel()};
+})();
+
+/* Aviso de cookies */
+(function(){
+ const K='jv_cookies',get=()=>{try{return localStorage.getItem(K)}catch(e){return null}},set=v=>{try{localStorage.setItem(K,v)}catch(e){}};
+ const b=document.createElement('div');b.id='ck';b.setAttribute('role','dialog');b.setAttribute('aria-label','Aviso de cookies');
+ b.innerHTML='<p class="ck-t">Aviso de la casa</p><p class="ck-p">Esta web puede provocar ganas repentinas de fiesta, canciones pegadas durante días y un impulso incontrolable de buscar entradas. Las cookies que usamos no se comen, no se bailan y no dan resaca: solo recuerdan que ya pasaste por aquí. Y como manda la ley, te lo preguntamos antes. <a href="#/cookies">Más info en la política de cookies</a>.</p><div class="ck-b"><button type="button" class="btn s" data-ck="all">Acepto, ¡a bailar!</button><button type="button" class="btn" data-ck="min">Solo las necesarias</button></div>';
+ document.body.appendChild(b);
+ const show=()=>b.classList.add('on'),hide=()=>b.classList.remove('on');
+ b.addEventListener('click',e=>{const t=e.target.closest('[data-ck]');if(t){set(t.dataset.ck);window.JV_CONSENT=t.dataset.ck;hide();return}const l=e.target.closest('a');if(l)hide()});
+ document.addEventListener('click',e=>{if(e.target.closest('#ckc')){show()}});
+ window.JV_CONSENT=get();
+ if(!get()){const w=setInterval(()=>{if(!document.getElementById('ld')){clearInterval(w);setTimeout(show,700)}},200)}
 })();

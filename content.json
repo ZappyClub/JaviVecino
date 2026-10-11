@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-10T18:00:06.302Z",
+  "updatedAt": "",
   "artist": {
     "tagline": "",
     "email": "",
@@ -86,26 +86,12 @@
     ]
   },
   "session": {
-    "title": "BAD BUNNY MIX 🔥🐰 | REGGAETON 2026 | Javivecinodj",
+    "title": "Bad Bunny Mix · Sesión",
     "url": "https://www.youtube.com/watch?v=1N5DyPYPGI0",
     "cover": "assets/img/sesion-yt-1280.jpg"
   },
   "mashups": [],
-  "events": [
-    {
-      "id": "",
-      "published": true,
-      "title": "Halloween Iris 2026",
-      "date": "2026-10-31",
-      "time": "00:00",
-      "venue": "Discoteca Iris Betanzos",
-      "city": "A Coruña",
-      "poster": "assets/uploads/mv2p8h0q-841487390-18096777116431622-676156877647.jpg",
-      "tickets": "",
-      "desc": "",
-      "slug": "halloween-iris-2026"
-    }
-  ],
+  "events": [],
   "packs": [],
   "gallery": [
     {
@@ -204,5 +190,11 @@
       "url": "",
       "published": true
     }
-  ]
+  ],
+  "legal": {
+    "titular": "",
+    "nif": "",
+    "domicilio": "",
+    "email": ""
+  }
 }
