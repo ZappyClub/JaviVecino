@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "",
+  "updatedAt": "2026-10-12T10:11:28.496Z",
   "artist": {
     "tagline": "",
     "email": "",
@@ -91,7 +91,20 @@
     "cover": "assets/img/sesion-yt-1280.jpg"
   },
   "mashups": [],
-  "events": [],
+  "events": [
+    {
+      "id": "",
+      "published": true,
+      "title": "Halloween Iris",
+      "date": "2026-10-31",
+      "time": "00:00",
+      "venue": "Discoteca Iris, Betanzos",
+      "city": "A Coruña",
+      "poster": "assets/uploads/mv53dxq9-841487390-18096777116431622-676156877647.jpg",
+      "tickets": "",
+      "desc": ""
+    }
+  ],
   "packs": [],
   "gallery": [
     {
