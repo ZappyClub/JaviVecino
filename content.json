@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-12T10:11:28.496Z",
+  "updatedAt": "",
   "artist": {
     "tagline": "",
     "email": "",
@@ -86,25 +86,12 @@
     ]
   },
   "session": {
-    "title": "Bad Bunny Mix · Sesión",
-    "url": "https://www.youtube.com/watch?v=1N5DyPYPGI0",
-    "cover": "assets/img/sesion-yt-1280.jpg"
+    "title": "Sesión en Discoteca Iris",
+    "url": "https://www.youtube.com/watch?v=4I-0f21tQzU",
+    "cover": "assets/img/sesion-iris-1280.jpg"
   },
   "mashups": [],
-  "events": [
-    {
-      "id": "",
-      "published": true,
-      "title": "Halloween Iris",
-      "date": "2026-10-31",
-      "time": "00:00",
-      "venue": "Discoteca Iris, Betanzos",
-      "city": "A Coruña",
-      "poster": "assets/uploads/mv53dxq9-841487390-18096777116431622-676156877647.jpg",
-      "tickets": "",
-      "desc": ""
-    }
-  ],
+  "events": [],
   "packs": [],
   "gallery": [
     {
@@ -200,6 +187,46 @@
       "type": "dj",
       "title": "DJ",
       "src": "assets/img/dj-4.jpg",
+      "url": "",
+      "published": true
+    },
+    {
+      "id": "publico-4",
+      "type": "publico",
+      "title": "Público",
+      "src": "assets/img/publico-4.jpg",
+      "url": "",
+      "published": true
+    },
+    {
+      "id": "publico-5",
+      "type": "publico",
+      "title": "Público",
+      "src": "assets/img/publico-5.jpg",
+      "url": "",
+      "published": true
+    },
+    {
+      "id": "publico-6",
+      "type": "publico",
+      "title": "Público",
+      "src": "assets/img/publico-6.jpg",
+      "url": "",
+      "published": true
+    },
+    {
+      "id": "publico-7",
+      "type": "publico",
+      "title": "Público",
+      "src": "assets/img/publico-7.jpg",
+      "url": "",
+      "published": true
+    },
+    {
+      "id": "dj-5",
+      "type": "dj",
+      "title": "DJ",
+      "src": "assets/img/dj-5.jpg",
       "url": "",
       "published": true
     }
